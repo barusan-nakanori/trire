@@ -1,2 +1,19 @@
-<h1>Books#index</h1>
-<p>Find me in app/views/books/index.html.erb</p>
+<%= render"users/sidebar" ,book:@book %>
+
+<h1>Books</h1>
+<table>
+	<tr>
+		<th></th>
+		<th>Title</th>
+		<th>Opinion</th>
+	</tr>
+	<tr>
+			<td>
+				<%= attachment_image_tag book.user_id,:profile_image,format:"jpeg",class:"image-circle pull-left profile-img",fallback:"image.jpg",size:"30x30"%>
+			</td>
+		<% @books.each do |book| %>
+			<td><%= book.title %></td>
+			<td><%= book.body%></td>
+		<% end %>
+	</tr>
+</table>
