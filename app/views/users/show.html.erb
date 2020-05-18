@@ -10,7 +10,7 @@
 	<tr>
 		<td><%= attachment_image_tag @user, :profile_image %></td>
 		<% @post_book.each do |post_book|%>
-		<td><%= post_book.name %></td>
+		<td><%= link_to post_book.name,"books/#{book.id}" %></td>
 		<td><%= post_book.body %></td>
 		<% end%>
 	</tr>
