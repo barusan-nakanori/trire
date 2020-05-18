@@ -1,3 +1,14 @@
-<h1>Users#edit</h1>
-<p>編集ページ</p>
+<h1>Users Info</h1>
+<%= form_for(@user) do |f| %>
 
+<p>Name</p>
+<%= f.text_field :name ,autofocus: true%>
+
+<%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
+
+<p>Introduction</p>
+<%= f.text_area :introduction, autofocus: true %>
+
+<%= f.submit "Update User" %>
+
+<% end %>
