@@ -8,9 +8,6 @@
 		<th>Opinion</th>
 	</tr>
 	<tr>
-			<td>
-				<%= attachment_image_tag book.user_id,:profile_image,format:"jpeg",class:"image-circle pull-left profile-img",fallback:"animal-ninki-gazou9.jpg",size:"30x30"%>
-			</td>
 		<% @books.each do |book| %>
 			<td><%= book.title %></td>
 			<td><%= book.body%></td>

@@ -1,3 +1,17 @@
 
 <%= render "users/sidebar" , book:@book %>
-ここがマイページ
+<h1>Books</h1>
+<table>
+	<tr>
+		<th></th>
+		<th>Title</th>
+		<th>Opinion</th>
+	</tr>
+	<tr>
+		<td><%= attachment_image_tag @user, :profile_image %></td>
+		<% @post_book.each do |post_book|%>
+		<td><%= post_book.name %></td>
+		<td><%= post_book.body %></td>
+		<% end%>
+	</tr>
+</table>
