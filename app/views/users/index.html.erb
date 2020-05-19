@@ -4,7 +4,7 @@
 <h1>Users</h1>
 <% @users.each do |user| %>
 	<p>Image</p>
-
+	<%= attachment_image_tag user, :profile_image, size: "60x60", fallback:"HpGJ--S9_400x400.jpg" %>
 
 	<p>Name</p>
 	<span><%= user.name %></span>

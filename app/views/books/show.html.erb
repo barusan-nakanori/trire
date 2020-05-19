@@ -7,7 +7,7 @@
 <h1>Book detail</h1>
 <table>
 	<tr>
-			<td></td>
+			<td><%= attachment_image_tag @book.user, :profile_image, size: "60x60" %></td>
 			<td><%= @book.title %></td>
 			<td><%= @book.body %></td>
 		<% if @book.user == current_user %>
