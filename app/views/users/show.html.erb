@@ -7,16 +7,26 @@
 <%= render "users/sidebar" , book:@book %>
 <h1>Books</h1>
 <table>
+	<tbody>
 	<tr>
 		<th></th>
 		<th>Title</th>
 		<th>Opinion</th>
 	</tr>
 	<tr>
-		<td><%= attachment_image_tag @user, :profile_image %></td>
-		<% @books.each do |book|%>
-		<td><%= link_to book.title, book_path(book.id) %></td>
+		<% @books.each do |book| %>
+		<td>
+			<%= link_to user_path(@user) do %>
+				<%= attachment_image_tag book.user, :profile_image , size: "60x60" %>
+			<% end %>
+		</td>
+
+			<%= link_to book_path(book.id) do %>
+				<%= book.title %>
+			<% end %>
+		</td>
 		<td><%= book.body %></td>
 		<% end%>
 	</tr>
+	</tbody>
 </table>
