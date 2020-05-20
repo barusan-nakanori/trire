@@ -1,0 +1,28 @@
+<h1>User info</h1>
+
+<% if @user.errors.any? %>
+	<div id="error_explanation">
+		<div class="alert alert-danger">
+			<%= pluralize(@user.errors.count,"error") %> prohibited this obj from being saved:
+		</div>
+<% @user.errors.full_messages.each do |message| %>
+	<div class="form-error">
+		<%= message %>
+	</div>
+<% end %>
+<% end %>
+
+
+<%= form_for(@user) do |f| %>
+
+<p>Name</p>
+<%= f.text_field :name ,autofocus: true%></br>
+
+<%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %></br>
+
+<p>Introduction</p>
+<%= f.text_area :introduction, autofocus: true %>
+
+<%= f.submit "Update User" %>
+
+<% end %>
