@@ -1,28 +1,37 @@
-<h1>User info</h1>
+<div class="col-md-offset-1">
+	<h1>User info</h1>
 
-<% if @user.errors.any? %>
-	<div id="error_explanation">
-		<div class="alert alert-danger">
-			<%= pluralize(@user.errors.count,"error") %> prohibited this obj from being saved:
+	<% if @user.errors.any? %>
+		<div id="error_explanation" class="col-md-4">
+			<div class="alert alert-danger ">
+				<%= pluralize(@user.errors.count,"error") %> prohibited this obj from being saved:
+			</div>
+	<% @user.errors.full_messages.each do |message| %>
+		<div class="form-error">
+			<%= message %>
 		</div>
-<% @user.errors.full_messages.each do |message| %>
-	<div class="form-error">
-		<%= message %>
+	<% end %>
+	<% end %>
+
+
+	<%= form_for(@user) do |f| %>
+
+	<div class="form-group">
+		<label>Name</label></br>
+		<%= f.text_field :name ,autofocus: true%>
 	</div>
-<% end %>
-<% end %>
 
+	<div class="form-group">
+		<label>Image</label>
+		<%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %></br>
+	</div>
 
-<%= form_for(@user) do |f| %>
+	<div class="form-group">
+		<label>Introduction</label>
+		<%= f.text_area :introduction, autofocus: true %>
+	</div>
 
-<p>Name</p>
-<%= f.text_field :name ,autofocus: true%></br>
+	<%= f.submit "Update User" %>
 
-<%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %></br>
-
-<p>Introduction</p>
-<%= f.text_area :introduction, autofocus: true %>
-
-<%= f.submit "Update User" %>
-
-<% end %>
+	<% end %>
+</div>
