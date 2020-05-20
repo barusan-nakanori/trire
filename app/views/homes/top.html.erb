@@ -1,16 +1,29 @@
 <%= render "layouts/flash" %>
 
-<h1>Welcome to Bookers!!</h1>
-<p>In Bookers,
+<div class="row">
+	<div class="top-message col-md-6 col-md-offset-3">
+		<h1>Welcome to <span class="glyphicon glyphicon-book" aria-hidden="true"></span>Bookers!!</h1>
+		<p>In <strong>Bookers<span class="glyphicon glyphicon-book" aria-hidden="true"></span></strong>,</p>
 
-you can share and exchange your opinions , inpressions , and emotions
+		<p>you can share and exchange your opinions , inpressions , and emotions</p>
 
-about various books!</p>
+		<p>about various books!</p>
 
-<% if user_signed_in? %>
-	<%= link_to "Log in", user_path(current_user)  %>
-	<%= link_to "Sign Up", user_path(current_user) %>
-<% else %>
-	<%= link_to "Log in", new_user_session_path  %>
-	<%= link_to "Sign Up", new_user_registration_path %>
-<% end %>
+		<% if user_signed_in? %>
+
+			<div class="row">
+				<%= link_to "Log in", user_path(current_user) , class: "btn btn-info" %>
+			</div>
+			<div class="row">
+				<%= link_to "Sign Up", user_path(current_user) %>
+			</div>
+		<% else %>
+			<div class="row">
+				<%= link_to "Log in", new_user_session_path , class: "btn btn-info col-xs-10 col-xs-offset-1" %>
+			</div>
+			<div class="row">
+				<%= link_to "Sign Up", new_user_registration_path , class: "btn btn-success col-xs-10 col-xs-offset-1" %>
+			</div>
+		<% end %>
+	</div>
+</div>
