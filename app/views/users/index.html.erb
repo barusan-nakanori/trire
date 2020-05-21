@@ -1,29 +1,28 @@
-<div class="col-xs-3">
-	<%= render "users/sidebar" , book:@book %>
-</div>
-
 <div class="container">
 	<div class="row">
-		<div class="col-xs-9">
-				<h1>Users</h1>
-				<table class="table table-inverse ">
-						<thead>
-							<tr>
-								<th>Image</th>
-								<th>Name</th>
-								<th></th>
-							</tr>
-						</thead>
-						<% @users.each do |user| %>
-						<tbody>
-							<tr>
-								<td><%= attachment_image_tag user, :profile_image, size: "60x60", fallback:"HpGJ--S9_400x400.jpg" %></td>
-								<td><%= user.name %></td>
-								<td><%= link_to "Show",user_path(user.id) %></td>
-							</tr>
-						</tbody>
-					<% end %>
-				</table>
+		<div class="col-xs-3">
+			<%= render "users/sidebar" , book:@book %>
 		</div>
-	</div>
-</div>
+				<div class="col-xs-9">
+						<h1>Users</h1>
+						<table class="table table-inverse ">
+								<thead>
+									<tr>
+										<th>Image</th>
+										<th>Name</th>
+										<th></th>
+									</tr>
+								</thead>
+								<% @users.each do |user| %>
+								<tbody>
+									<tr>
+										<td><%= attachment_image_tag user, :profile_image, size: "60x60", fallback:"HpGJ--S9_400x400.jpg" %></td>
+										<td><%= user.name %></td>
+										<td><%= link_to "Show",user_path(user.id) %></td>
+									</tr>
+								</tbody>
+							<% end %>
+						</table>
+				</div>
+			</div>
+		</div>
