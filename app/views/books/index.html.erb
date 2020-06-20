@@ -25,6 +25,8 @@
 						<th></th>
 						<th>Title</th>
 						<th>Opinion</th>
+						<th>いいね</th>
+						<th>コメント</th>
 					</tr>
 				</thead>
 				<% @books.each do |book| %>
@@ -50,6 +52,7 @@
 									<% end %>
 							    </td>
 							<% end %>
+							<td><%= book.comments.count %>件</td>
 						</tr>
 				</tbody>
 				<% end %>
