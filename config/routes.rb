@@ -6,8 +6,9 @@ Rails.application.routes.draw do
         registrations: 'users/registrations'
     }
     resources :users,only: [:index,:show,:edit,:update] do
-      get 'follower', to:'users#follower'
-      get 'following', to:'users#following'
+      member do
+      get :follower, :following
+    end
     end
     resources :books do
      resources :favorites, only: [:create, :destroy]

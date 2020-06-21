@@ -11,7 +11,7 @@
 			<th></th>
 		</tr>
 	</thead>
-	<% current_user.follower_user.each do |f| %>
+	<% @user.follower_user.each do |f| %>
 	<tbody>
 		<tr>
 			<td>
@@ -24,6 +24,8 @@
 			<td>フォロワー数 : <%= f.followed.count %></td>
 			<% if current_user.following?(f) %>
 				<td><%= link_to 'フォロー外す', unfollow_path(f), method: :POST %></td>
+			<% elsif current_user == f %>
+				<td></td>
 			<% else %>
 				<td><%= link_to 'フォローする', follow_path(f), method: :POST %></td>
 			<% end %>
