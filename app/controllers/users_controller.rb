@@ -27,6 +27,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def following
+    # @users = User.all
+    @user = User.where(follower_id: params[:id])
+  end
+
+  def follower
+    @follower = User.where(followed_id: params[:id])
+  end
+
   private
   	def user_params
   		params.require(:user).permit(:name, :profile_image, :introduction)
@@ -36,5 +45,6 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       redirect_to user_path(current_user) unless @user == current_user
     end
+
 
 end

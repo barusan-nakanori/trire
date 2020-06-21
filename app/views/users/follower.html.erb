@@ -1,0 +1,34 @@
+<div class="col-xs-10 col-md-offset-1">
+<h1>Follower Users</h1>
+<table class="table table-inverse">
+	<thead>
+		<tr>
+			<th>Image</th>
+			<th>name</th>
+			<th></th>
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<% current_user.follower_user.each do |f| %>
+	<tbody>
+		<tr>
+			<td>
+				<%= link_to user_path(f) do %>
+					<%= attachment_image_tag f, :profile_image, size: "60x60",fallback:"HpGJ--S9_400x400.jpg" %>
+				<% end %>
+			</td>
+			<td><%= f.name %></td>
+			<td>フォロー数 : <%= f.follower.count %></td>
+			<td>フォロワー数 : <%= f.followed.count %></td>
+			<% if current_user.following?(f) %>
+				<td><%= link_to 'フォロー外す', unfollow_path(f), method: :POST %></td>
+			<% else %>
+				<td><%= link_to 'フォローする', follow_path(f), method: :POST %></td>
+			<% end %>
+			<td><%= link_to "show",user_path(f) %></td>
+		</tr>
+	</tbody>
+	<% end %>
+</table>

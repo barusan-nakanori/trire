@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-3">
-			<%= render "users/sidebar" , book:@book %>
+			<%= render "users/sidebar" , book:@book, user: current_user %>
 		</div>
 				<div class="col-xs-9">
 						<h1>Users</h1>
@@ -13,11 +13,20 @@
 										<th></th>
 									</tr>
 								</thead>
-								<% @users.each do |user| %>
+							<% @users.each do |user| %>
 								<tbody>
 									<tr>
 										<td><%= attachment_image_tag user, :profile_image, size: "60x60", fallback:"HpGJ--S9_400x400.jpg" %></td>
 										<td><%= user.name %></td>
+										<td>フォロー数 : <%= user.follower.count %></td>
+										<td>フォロワー数 : <%= user.followed.count %></td>
+										<% if current_user.following?(user) %>
+											<td><%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %></td>
+										<% elsif current_user == user %>
+											<td></td>
+										<% else %>
+											<td><%= link_to 'フォローする', follow_path(user.id), method: :POST %></td>
+										<% end %>
 										<td><%= link_to "Show",user_path(user.id) %></td>
 									</tr>
 								</tbody>
