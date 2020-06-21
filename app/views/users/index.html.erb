@@ -13,13 +13,13 @@
 										<th></th>
 									</tr>
 								</thead>
-								<% @users.each do |user| %>
+							<% @users.each do |user| %>
 								<tbody>
 									<tr>
 										<td><%= attachment_image_tag user, :profile_image, size: "60x60", fallback:"HpGJ--S9_400x400.jpg" %></td>
 										<td><%= user.name %></td>
-										<td>フォロー数 : <%= @followed.count %></td>
-										<td>フォロワー数 : <%= @follower.count %></td>
+										<td>フォロー数 : <%= user.follower.count %></td>
+										<td>フォロワー数 : <%= user.followed.count %></td>
 										<% if current_user.following?(user) %>
 											<td><%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST %></td>
 										<% elsif current_user == user %>

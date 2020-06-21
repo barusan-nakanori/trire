@@ -11,11 +11,34 @@
 			<th>introduction</th>
 			<th><%= user.introduction %></th>
 		</tr>
+		<tr>
+			<th>follows</th>
+			<th>
+				<%= link_to user_following_path(user) do %>
+					<%= user.follower.count %>
+				<% end %>
+			</th>
+		</tr>
+		<tr>
+			<th>followers</th>
+			<th>
+				<%= link_to user_follower_path(user) do %>
+					<%= user.followed.count %>
+				<% end %>
+			</th>
+		</tr>
 	</tbody>
 </table>
+	<% if current_user == user %>
+		<%= link_to "",edit_user_path(current_user.id), class: "btn btn-default btn-block glyphicon glyphicon-wrench"%>
+	<% else %>
+		<% if current_user.following?(user) %>
+			<%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST, class: "btn btn-primary"%>
+		<% else %>
+			<%= link_to 'フォローする', follow_path(user.id), method: :POST, class: "btn btn-success"%>
+		<% end %>
+	<% end %>
 
-	<%= link_to "",edit_user_path(current_user.id), class: "btn btn-default btn-block glyphicon glyphicon-wrench"%>
-	
 <h1>New book</h1>
 <%= form_for(book) do |f| %>
 
