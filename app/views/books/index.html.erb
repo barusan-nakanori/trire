@@ -13,7 +13,9 @@
 			<% end %>
 		</div>
 	<% end %>
-	<%= render "shared/search" %>
+	<% if user_signed_in? %>
+		<%= render "shared/search" %>
+	<% end %>
 		<div class= "col-xs-3">
 			<%= render"users/sidebar" ,book:@book, user:current_user%>
 		</div>
