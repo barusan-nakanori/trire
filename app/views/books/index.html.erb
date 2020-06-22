@@ -1,18 +1,19 @@
-<% if @book.errors.any? %>
-	<div>
-		<div>
-			<%= pluralize(@book.errors.count,"error") %> prohibited this obj from being saved:
-		</div>
-
-		<% @book.errors.full_messages.each do |message| %>
-		<div>
-			<%= message %>
-		</div>
-	</div>
-	<% end %>
-	<% end %>
 <div class="container">
 	<div class="row">
+    <% if @book.errors.any? %>
+		<div>
+			<div>
+				<%= pluralize(@book.errors.count,"error") %> prohibited this obj from being saved:
+			</div>
+
+			<% @book.errors.full_messages.each do |message| %>
+			<div>
+				<%= message %>
+			</div>
+			<% end %>
+		</div>
+	<% end %>
+	<%= render "shared/search" %>
 		<div class= "col-xs-3">
 			<%= render"users/sidebar" ,book:@book, user:current_user%>
 		</div>
