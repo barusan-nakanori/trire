@@ -18,5 +18,6 @@ Rails.application.routes.draw do
   get 'following', to:'relationships#following'
   post 'follow/:id', to: 'relationships#create', as:'follow'
   post 'unfollow/:id', to: 'relationships#destroy', as:'unfollow'
+  get 'search', to: 'searches#search'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
